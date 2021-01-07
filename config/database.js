@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const startServer = () => {
   const CONNECTION_URL = process.env.MONGO_URI;
@@ -8,6 +11,7 @@ const startServer = () => {
       useUnifiedTopology: true,
       useCreateIndex: true
     });
+    console.log('mongoose connected');
   } catch (error) {
     console.log(error);
     process.exit(1);

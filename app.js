@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import logger from 'morgan';
 import userRoute from './routes/userRoute.js';
 import startServer from './config/database.js';
 
@@ -8,6 +9,7 @@ dotenv.config();
 const app = express();
 startServer();
 
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
